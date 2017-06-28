@@ -7,7 +7,7 @@
 <head>
 
 <!-- Start of Title -->
-<title>Web Development Page with Animation</title>
+<title>Constructor Object Pattern</title>
 
 <!-- Start of CSS Styling -->
 <style>
@@ -72,28 +72,11 @@ h2 {
 
 #main-wrapper{
 	background-image:url(background.jpg);
-	height:580px;
 }
-
-.cycle {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
-    -webkit-animation-timing-function: linear; /* Safari 4.0 - 8.0 */
-    animation: mymove 5s infinite;
-    animation-timing-function: linear;
-}
-
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes mymove {
-    from {left: 0px;}
-    to {left: 500px;}
-}
-
-@keyframes mymove {
-    from {left: 0px;}
-    to {left: 500px;}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+	padding: 10px;
 }
 
 </style>
@@ -130,30 +113,70 @@ h2 {
         
         <!-- Page Heading -->
         <div>
-        <h1 style="text-align:center"><u>Web Development using animation-timing-function</u></h1>
+        <h1 style="text-align:center"><u>Constructor Object Pattern</u></h1>
 		</div>
+        <div class="pid">
+        <p id="demo"></p>
+        </div>
         
-        <!-- Start Section -->
-		<section style="padding:10px;">         		
-  			
-            <br> <br> <br>
-            
-          		<div class="cycle">
-                <img src="cycle.png" width="300px;">
-                </div>
-       		
-		</section>
-        <!-- End Section -->
-		<br>
-</div>
-<!-- Start Start Footer -->
-<footer>
-  <p style="text-align:center; color:rgb(0,51,153);">&copy; Copyright 2017. Developed by Arvind Ahuja: <a href="mailto:geetika.arvind@gmail.com">
-  Email Me</a>.</p>  
-</footer>
-<!-- End Footer -->
-      
+        <!-- Start of Table -->
+        <table style="">
+        
+            <tr>
+                <th>SNo.</th>
+                <th>Username</th>
+                <th>Skills</th>
+                <th>Salary</th>
+            </tr>
+            <tbody>
+            <tr>
+                <td id="id">1</td>
+                <td id="name1">Arvind Ahuja</td>
+                <td id="skill">HTML, CSS, Javascript</td>
+                <td id="price">Rs.1000</td>
+                <td><a href="javascript:" onclick="printdetails()" id="first">View</a></td>
+                <td><a href="javascript:" onclick="changesalary()" id="first">Change salary</a></td>
+            </tr>
+
+            <div style="display:none;">
+                ID:<p class="id"></p>
+                Name:<p class="name"></p>
+                Skills:<p class="sk"></p>
+                Salary:<p class="sal"></p>
+            </div>
+
+			</tbody>
+		</table>
+		<!-- End of Table -->
+        
+        <!-- Javascript Start -->
+<script>
+
+	function checkemp(name, skill, sal) {
+		this.username = name;
+		this.skills = skill;
+		this.price = sal;		
+	}	
+	function printdetails()
+	{			
+		var name=document.getElementById ( "name1" ).innerText;	
+		var skill =document.getElementById ( "skill" ).innerText;
+		var price =document.getElementById ( "price" ).innerText;	
+		var emp = new checkemp(name, skill, price);	
+	
+	document.getElementById("demo").innerHTML =
+	"Name: " + emp.username + "<br> Skills: " + emp.skills + "<br> Salary: " + emp.price; 
+	}
+	
+	function changesalary()
+	{
+	 var salary = prompt("Please enter salary", "");
+		document.getElementById ( "price" ).innerText=salary;
+	}
+</script>
+		<!-- Javascript End -->
+        
 </body>
-<!-- End body --> 
+<!-- End Body-->
 </html>
-<!-- End HTML --> 
+<!-- End HTML-->
